@@ -139,7 +139,7 @@ class EaduanController extends Controller
 
                 $file = $request->file('theFile');
                 $name = $request->file('theFile')->getClientOriginalName();
-                $result = Storage::disk('sftp')->putFileAs('/nfs', $file, $name);
+                $result = Storage::disk('sftp')->putFileAs('/aduantrafikdb/client_share/', $file, $name);
     
                 // $nama = $data->no_aduan . '_' . $data->pengadu . '_' . time() . '.' . $request->theFile->extension();
                 // // dd($nama);

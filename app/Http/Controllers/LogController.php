@@ -38,8 +38,7 @@ class LogController extends Controller
     {
         $file = $request->file('theFile');
         $name = $request->file('theFile')->getClientOriginalName();
-        $result = Storage::disk('sftp')->putFileAs('/nfs', $file, $name);
-
+        $result = Storage::disk('sftp')->putFileAs('/aduantrafikdb/client_share', $file, $name);
         return $result;
 
     }

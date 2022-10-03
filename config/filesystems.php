@@ -13,7 +13,7 @@ return [
     |
      */
 
-    'default' => env('FILESYSTEM_DISK', 'local'),
+    'default' => 'sftp',
 
     /*
     |--------------------------------------------------------------------------
@@ -59,7 +59,8 @@ return [
         'sftp' => [
             'driver' => 'sftp',
             'host' => '10.180.0.226',
-
+            'permPublic' => 0755,
+            'visibility' => 'public',
             // Settings for basic authentication...
             'username' => 'root',
             'password' => 'JPJ.P@ssw0rd',
