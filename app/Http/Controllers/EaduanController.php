@@ -135,23 +135,23 @@ class EaduanController extends Controller
                 return response()->json($resp);
             }
     
-            if ($request->theFile) {
+            if ($request->gambar) {
 
-                $file = $request->file('theFile');
-                $name = $request->file('theFile')->getClientOriginalName();
-                $result = Storage::disk('sftp')->putFileAs('/aduantrafikdb/client_share/', $file, $name);
+                // $file = $request->file('theFile');
+                // $name = $request->file('theFile')->getClientOriginalName();
+                // $result = Storage::disk('sftp')->putFileAs('/aduantrafikdb/client_share/', $file, $name);
     
-                // $nama = $data->no_aduan . '_' . $data->pengadu . '_' . time() . '.' . $request->theFile->extension();
-                // // dd($nama);
-                // $request->theFile->move(public_path('aduantrafikdb/client_share/'), $nama);
+                $nama = $data->no_aduan . '_' . $data->pengadu . '_' . time() . '.' . $request->gambar->extension();
+                // dd($nama);
+                $request->gambar->move(public_path('aduantrafikdb/client_share/'), $nama);
                 $obj = new stdClass;
-                $obj->upload = $request->theFile;
-                $obj->type = $request->theFile->getClientOriginalExtension();
-                $saiz = $request->theFile->getSize();
+                $obj->upload = $request->gambar;
+                $obj->type = $request->gambar->getClientOriginalExtension();
+                $saiz = $request->gambar->getSize();
                 $saiz = $saiz / 1024;
                 $obj->size = $saiz.' kb';
-                $obj->file = $result;
-                $data->file_path = $result;
+                $obj->file = '/aduantrafikdb/client_share/'.$nama;
+                $data->file_path = '/aduantrafikdb/client_share/'.$nama;
                 // $disk = Storage::build([
                 //     'driver' => 'sftp',
                 //     'root' => '/',
